@@ -39,6 +39,7 @@ register.get('/check_uname',(req,res,next)=>{
     }
   })
 })
+
 register.post('/register',(req,res,next)=>{
   console.log(req.body);
   const user_name=req.body.user_name
@@ -46,7 +47,7 @@ register.post('/register',(req,res,next)=>{
   const upwd=req.body.upwd
   const uemail=req.body.uemail
   const uphone=req.body.uphone
-  const tx='../img/left.png'
+  const tx='http://127.0.0.1:3030/img/left.png'
   pool.query('INSERT INTO food_user VALUES(null,?,?,?,?,?,?,null)',[uname,upwd,uemail,uphone,tx,user_name],(err,r)=>{
     if(err){
 			//如果SQL中有错误，交给下一个错误处理中间件
