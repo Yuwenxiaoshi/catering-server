@@ -35,7 +35,7 @@ CREATE TABLE food_shoppingcart_item(
   limg VARCHAR(128), #商品图片
   subtitle VARCHAR(128), #商品副标题
   user_id INT,      #用户编号
-  product_id INT,   #商品编号
+  product_id INT Unique Key,   #商品编号
   title VARCHAR(128),         #主标题
   price DECIMAL(10,2),        #价格
   count INT,        #购买数量
@@ -94,7 +94,6 @@ INSERT INTO food_user VALUES
 (null,'yuwenxiaoshi','az112233','123456@qq.com','13566667777','http://127.0.0.1:3030/Icon/1.jpg','余温消逝',1);
 /*购物车条目信息*/
 INSERT INTO food_shoppingcart_item VALUES
-(null,"http://127.0.0.1:3030/img/a71990edfcb3fb99af6af4af3bbfb689.jpg","草莓,蓝莓等水果,多种类型的披萨",1,1,"水果披萨",29.99,1,0),
 (null,"http://127.0.0.1:3030/img/be32890d0771b79259e9cfb76c61bf5b.jpg","草莓,蓝莓等水果,多种口味的奶昔",1,2,"水果披萨",29.99,1,0);
 
 /****首页轮播广告商品****/

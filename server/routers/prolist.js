@@ -36,7 +36,7 @@ prolist.get('/prolistbtn', (req, res, next) => {
 })
 
 prolist.post('/postlist', (req, res, next) => {
-  pool.query('INSERT INTO food_shoppingcart_item VALUES(null,(select uid from food_user where user_name=?),(select lid from food_laptop where title=?),?,(select price from food_laptop where title=?),1,0)', [req.body.user_name, req.body.title, req.body.title, req.body.title], (err, r) => {
+  pool.query('INSERT INTO food_shoppingcart_item VALUES(null,?,?,(select uid from food_user where uname=?),?,?,?,1,0)', [req.body.img, req.body.subtitle, req.body.uname, req.body.lid, req.body.title, req.body.price], (err, r) => {
     if (err) {
       next(err)
       return

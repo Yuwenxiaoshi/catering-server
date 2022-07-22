@@ -14,7 +14,7 @@ shoppingcart.get('/shopping', (req, res) => {
   })
 })
 shoppingcart.put('/put', (req, res, next) => {
-  pool.query('update food_shoppingcart_item set is_checked=? where  user_id=(select uid from food_user where uname=?)', [req.body.check, req.body.user_name], (err, r) => {
+  pool.query('update food_shoppingcart_item set is_checked=? where  user_id=(select uid from food_user where uname=?) and product_id=?', [req.body.check, req.body.uname, req.body.lid], (err, r) => {
     if (err) {
       next(err)
       return
@@ -58,6 +58,17 @@ shoppingcart.put('/putselect', (req, res, next) => {
 
 shoppingcart.delete('/buy', (req, res) => {
   pool.query('delete from food_shoppingcart_item where user_id=(select uid from food_user where user_name=?) and is_checked=1', [req.query.user_name], (err, r) => {
+    if (err) throw err
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: '删除成功' })
+    } else {
+      res.send({ code: 201, msg: '删除失败' })
+    }
+  })
+})
+
+shoppingcart.delete('/delPd', (req, res) => {
+  pool.query('delete from food_shoppingcart_item where user_id=(select uid from food_user where uname=?) and product_id=?', [req.query.uname, req.query.id], (err, r) => {
     if (err) throw err
     if (r.affectedRows > 0) {
       res.send({ code: 200, msg: '删除成功' })
