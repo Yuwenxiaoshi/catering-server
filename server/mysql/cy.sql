@@ -91,10 +91,11 @@ INSERT INTO food_laptop VALUES
 
 /*用户信息*/
 INSERT INTO food_user VALUES
-(null,'yuwenxiaoshi','az112233','123456@qq.com','13566667777','http://127.0.0.1:3030/img/left.png','余温消逝',1);
+(null,'yuwenxiaoshi','az112233','123456@qq.com','13566667777','http://127.0.0.1:3030/Icon/1.jpg','余温消逝',1);
 /*购物车条目信息*/
 INSERT INTO food_shoppingcart_item VALUES
-(null,"http://127.0.0.1:3030/img/a71990edfcb3fb99af6af4af3bbfb689.jpg","草莓,蓝莓等水果,多种类型的披萨",1,1,"水果披萨",29.99,1,0);
+(null,"http://127.0.0.1:3030/img/a71990edfcb3fb99af6af4af3bbfb689.jpg","草莓,蓝莓等水果,多种类型的披萨",1,1,"水果披萨",29.99,1,0),
+(null,"http://127.0.0.1:3030/img/be32890d0771b79259e9cfb76c61bf5b.jpg","草莓,蓝莓等水果,多种口味的奶昔",1,2,"水果披萨",29.99,1,0);
 
 /****首页轮播广告商品****/
 INSERT INTO  food_index_carousel VALUES

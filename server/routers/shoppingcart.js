@@ -14,7 +14,7 @@ shoppingcart.get('/shopping', (req, res) => {
   })
 })
 shoppingcart.put('/put', (req, res, next) => {
-  pool.query('update food_shoppingcart_item set is_checked=? where  user_id=(select uid from food_user where user_name=?)', [req.body.check, req.body.user_name], (err, r) => {
+  pool.query('update food_shoppingcart_item set is_checked=? where  user_id=(select uid from food_user where uname=?)', [req.body.check, req.body.user_name], (err, r) => {
     if (err) {
       next(err)
       return
