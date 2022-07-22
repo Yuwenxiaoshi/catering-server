@@ -32,6 +32,8 @@ CREATE TABLE food_user(
 /**购物车条目**/
 CREATE TABLE food_shoppingcart_item(
   iid INT PRIMARY KEY AUTO_INCREMENT,
+  limg VARCHAR(128), #商品图片
+  subtitle VARCHAR(128), #商品副标题
   user_id INT,      #用户编号
   product_id INT,   #商品编号
   title VARCHAR(128),         #主标题
@@ -42,11 +44,13 @@ CREATE TABLE food_shoppingcart_item(
 /****首页轮播广告商品****/
 CREATE TABLE food_index_carousel(
   cid INT PRIMARY KEY AUTO_INCREMENT,
+  product_id INT,   #商品编号
   img VARCHAR(128)
 );
 /****首页商品****/
 CREATE TABLE food_index_laptop(
   flid INT PRIMARY KEY AUTO_INCREMENT,
+  product_id INT,   #商品编号
   family_id INT,              #家族编号
   title VARCHAR(128),         #主标题
   subtitle VARCHAR(128),      #副标题
@@ -90,21 +94,21 @@ INSERT INTO food_user VALUES
 (null,'yuwenxiaoshi','az112233','123456@qq.com','13566667777','http://127.0.0.1:3030/img/left.png','余温消逝',1);
 /*购物车条目信息*/
 INSERT INTO food_shoppingcart_item VALUES
-(null,1,1,"水果披萨",29.99,1,0);
+(null,"http://127.0.0.1:3030/img/a71990edfcb3fb99af6af4af3bbfb689.jpg","草莓,蓝莓等水果,多种类型的披萨",1,1,"水果披萨",29.99,1,0);
 
 /****首页轮播广告商品****/
 INSERT INTO  food_index_carousel VALUES
-(null,"http://127.0.0.1:3030/img/be32890d0771b79259e9cfb76c61bf5b.jpg"),
-(null,"http://127.0.0.1:3030/img/meat-g40491505c_1920.jpg"),
-(null,"http://127.0.0.1:3030/img/v2-c191864f30cd48cb36988ea60b455c56_r.jpg"),
-(null,"http://127.0.0.1:3030/img/a71990edfcb3fb99af6af4af3bbfb689.jpg");
+(null,2,"http://127.0.0.1:3030/img/be32890d0771b79259e9cfb76c61bf5b.jpg"),
+(null,7,"http://127.0.0.1:3030/img/meat-g40491505c_1920.jpg"),
+(null,8,"http://127.0.0.1:3030/img/v2-c191864f30cd48cb36988ea60b455c56_r.jpg"),
+(null,1,"http://127.0.0.1:3030/img/a71990edfcb3fb99af6af4af3bbfb689.jpg");
 
 /*首页商品*/
 INSERT INTO  food_index_laptop VALUES
-(1,3,"海鲜粉丝汤","扇贝,象拔蚌等多种海鲜","海鲜","http://127.0.0.1:3030/img/index_hot_food_img1.png"),
-(2,4,"咸菜1","咸菜,榨菜,酸萝卜,酸菜等菜品","下饭菜","http://127.0.0.1:3030/img/index_hot_food_img2.png"),
-(3,4,"咸菜2","咸菜,榨菜,酸萝卜,酸菜等菜品","下饭菜","http://127.0.0.1:3030/img/index_hot_food_img3.png"),
-(4,5,"糖醋排骨","新鲜猪肉现做","猪肉制品","http://127.0.0.1:3030/img/index_Sbanner_img3.png");
+(1,3,3,"海鲜粉丝汤","扇贝,象拔蚌等多种海鲜","海鲜","http://127.0.0.1:3030/img/index_hot_food_img1.png"),
+(2,4,4,"咸菜1","咸菜,榨菜,酸萝卜,酸菜等菜品","下饭菜","http://127.0.0.1:3030/img/index_hot_food_img2.png"),
+(3,5,4,"咸菜2","咸菜,榨菜,酸萝卜,酸菜等菜品","下饭菜","http://127.0.0.1:3030/img/index_hot_food_img3.png"),
+(4,6,5,"糖醋排骨","新鲜猪肉现做","猪肉制品","http://127.0.0.1:3030/img/index_Sbanner_img3.png");
 
 /*活动*/
 INSERT INTO food_activity_laptop VALUES
