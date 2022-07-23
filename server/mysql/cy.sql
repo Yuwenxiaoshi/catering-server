@@ -67,6 +67,28 @@ CREATE TABLE food_activity_laptop(
   img VARCHAR(128),            #图片路径
   atime int                   #活动类型
 );
+/***收货地址***/
+CREATE TABLE food_location_item(
+  tid INT PRIMARY KEY AUTO_INCREMENT,
+  lname VARCHAR(32), #收货人姓名
+  lphone VARCHAR(32),#收货人电话
+  llocation VARCHAR(128),#收货人省市级地址
+  nlocation VARCHAR(128),#收货人详细地址
+  user_id INT, #账号ID
+);
+/****订单详情****/
+CREATE TABLE food_receiving_item(
+  rid INT PRIMARY KEY AUTO_INCREMENT,
+  lname VARCHAR(32), #收货人姓名
+  lphone VARCHAR(32),#收货人电话
+  llocation VARCHAR(32),#收货人地址
+  product_id INT, #商品ID
+  user_id INT, #下单账号ID
+  odd VARCHAR(32), #单号
+  count INT,        #购买数量
+  buydate INT,  #购买时间
+  receiving BOOLEAN # 是否收货
+);
 /*数据插入*/
 
 /*食品型号家族*/

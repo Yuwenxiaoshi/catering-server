@@ -39,6 +39,7 @@ prolist.post('/postlist', (req, res, next) => {
   pool.query('INSERT INTO food_shoppingcart_item VALUES(null,?,?,(select uid from food_user where uname=?),?,?,?,1,0)', [req.body.img, req.body.subtitle, req.body.uname, req.body.lid, req.body.title, req.body.price], (err, r) => {
     if (err) {
       next(err)
+      res.send({ code: 201, msg: "添加失败" })
       return
     }
     if (r.affectedRows > 0) {
