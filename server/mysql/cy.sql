@@ -74,7 +74,7 @@ CREATE TABLE food_location_item(
   lphone VARCHAR(32),#收货人电话
   llocation VARCHAR(128),#收货人省市级地址
   nlocation VARCHAR(128),#收货人详细地址
-  user_id INT, #账号ID
+  user_id INT #账号ID
 );
 /****订单详情****/
 CREATE TABLE food_receiving_item(
