@@ -18,4 +18,74 @@ me.post('/me', (req, res, next) => {
   })
 })
 
+me.put("/setusername", (req, res, next) => {
+  pool.query('update food_user set user_name=? where uid=?', [req.body.username, req.body.uid], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: "用户名修改成功", data: req.body.username })
+    } else {
+      res.send({ code: 201, msg: "用户名修改失败" })
+    }
+  })
+})
+
+me.put("/setupwd", (req, res, next) => {
+  pool.query('update food_user set upwd=? where uid=?', [req.body.upwd, req.body.uid], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: "密码修改成功" })
+    } else {
+      res.send({ code: 201, msg: "密码修改失败" })
+    }
+  })
+})
+
+me.put("/setsex", (req, res, next) => {
+  pool.query('update food_user set gender=? where uid=?', [req.body.gender, req.body.uid], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: "性别修改成功" })
+    } else {
+      res.send({ code: 201, msg: "性别修改失败" })
+    }
+  })
+})
+
+me.put("/setphone", (req, res, next) => {
+  pool.query('update food_user set phone=? where uid=?', [req.body.phone, req.body.uid], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: "手机号修改成功", data: req.body.phone })
+    } else {
+      res.send({ code: 201, msg: "手机号修改失败" })
+    }
+  })
+})
+
+me.put("/setemail", (req, res, next) => {
+  pool.query('update food_user set email=? where uid=?', [req.body.email, req.body.uid], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: "邮箱修改成功", data: req.body.email })
+    } else {
+      res.send({ code: 201, msg: "邮箱修改失败" })
+    }
+  })
+})
+
 module.exports = me
