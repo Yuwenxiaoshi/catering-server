@@ -32,6 +32,20 @@ me.put("/setusername", (req, res, next) => {
   })
 })
 
+me.get('/textpwd', (req, res, next) => {
+  pool.query("select uid from food_user where upwd=?", [req.query.upwd], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.length > 0) {
+      res.send({ code: 200, msg: '查询原密码成功' })
+    } else {
+      res.send({ code: 404, msg: "查询原密码失败" })
+    }
+  })
+})
+
 me.put("/setupwd", (req, res, next) => {
   pool.query('update food_user set upwd=? where uid=?', [req.body.upwd, req.body.uid], (err, r) => {
     if (err) {
