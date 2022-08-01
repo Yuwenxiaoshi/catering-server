@@ -32,7 +32,7 @@ me.put("/setusername", (req, res, next) => {
   })
 })
 
-me.get('/textpwd', (req, res, next) => {
+me.get('/testpwd', (req, res, next) => {
   pool.query("select uid from food_user where upwd=?", [req.query.upwd], (err, r) => {
     if (err) {
       next(err)
@@ -74,6 +74,20 @@ me.put("/setsex", (req, res, next) => {
   })
 })
 
+me.get("/testphone", (req, res, next) => {
+  pool.query('select uid from food_user where phone=?', [req.query.phone], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.length > 0) {
+      res.send({ code: 200, msg: "手机号查询成功" })
+    } else {
+      res.send({ code: 201, msg: "手机号查询失败" })
+    }
+  })
+})
+
 me.put("/setphone", (req, res, next) => {
   pool.query('update food_user set phone=? where uid=?', [req.body.phone, req.body.uid], (err, r) => {
     if (err) {
@@ -81,9 +95,23 @@ me.put("/setphone", (req, res, next) => {
       return
     }
     if (r.affectedRows > 0) {
-      res.send({ code: 200, msg: "手机号修改成功", data: req.body.phone })
+      res.send({ code: 200, msg: "手机号修改成功" })
     } else {
       res.send({ code: 201, msg: "手机号修改失败" })
+    }
+  })
+})
+
+me.get("/testemail", (req, res, next) => {
+  pool.query('select uid from food_user where email=?', [req.query.email], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.length > 0) {
+      res.send({ code: 200, msg: "邮箱查询成功" })
+    } else {
+      res.send({ code: 201, msg: "邮箱查询失败" })
     }
   })
 })
@@ -95,9 +123,23 @@ me.put("/setemail", (req, res, next) => {
       return
     }
     if (r.affectedRows > 0) {
-      res.send({ code: 200, msg: "邮箱修改成功", data: req.body.email })
+      res.send({ code: 200, msg: "邮箱修改成功" })
     } else {
       res.send({ code: 201, msg: "邮箱修改失败" })
+    }
+  })
+})
+
+me.put("/setavatar", (req, res, next) => {
+  pool.query('update food_user set avatar=? where uid=?', [req.body.avatar, req.body.uid], (err, r) => {
+    if (err) {
+      next(err)
+      return
+    }
+    if (r.affectedRows > 0) {
+      res.send({ code: 200, msg: "头像修改成功" })
+    } else {
+      res.send({ code: 201, msg: "头像修改失败" })
     }
   })
 })

@@ -22,7 +22,6 @@ const uuid = require('uuid')
 //接收请求 参数名为uploadFile
 icon.post('/upload',
   uploadTools.array('uploadFile'), (req, res) => {
-    console.log(req.files)
     let urls = []
     req.files.forEach(item => {
       urls.push(`http://127.0.0.1:3030/Icon/${item.filename}`)
