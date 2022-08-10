@@ -72,9 +72,13 @@ CREATE TABLE food_location_item(
   tid INT PRIMARY KEY AUTO_INCREMENT,
   lname VARCHAR(32), #收货人姓名
   lphone VARCHAR(32),#收货人电话
-  llocation VARCHAR(128),#收货人省市级地址
-  nlocation VARCHAR(128),#收货人详细地址
-  user_id INT #账号ID
+  province VARCHAR(128),#收货人省级地址
+  city VARCHAR(128),#收货人市级地址
+  county VARCHAR(128),#收货人县/区级地址
+  addressDetail VARCHAR(128),#收货人详细地址
+  user_id INT, #账号ID
+  postalCode INT, #邮箱编码
+  isDefault BOOLEAN #是否默认地址
 );
 /****订单详情****/
 CREATE TABLE food_receiving_item(
